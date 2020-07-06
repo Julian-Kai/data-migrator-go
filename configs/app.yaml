@@ -1,0 +1,17 @@
+connection:
+  postgres:
+    portiereDbName: portiere
+    portierePassword: FIXME
+    portiereMasterHost: FIXME
+    portiereMasterUser: FIXME
+    portiereMaxOpen: 10
+    portiereMaxIdle: 2
+    hermesDbName: hermes
+    hermesPassword: FIXME
+    hermesHost: FIXME
+    hermesUser: FIXME
+    hermesMaxOpen: 15
+    hermesMaxIdle: 5
+config:
+  queryLimit: 100
+  maxThread: 5
