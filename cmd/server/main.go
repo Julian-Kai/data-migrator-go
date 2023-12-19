@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 	"sync"
-	"syncTool/src/pkg/config"
-	"syncTool/src/repositories"
+	"syncTool/internal/repositories"
+	"syncTool/pkg/config"
 	"syncTool/tools"
 )
 
@@ -46,7 +46,7 @@ func main() {
 				idsTube <- ids
 
 				select {
-				case <- notifyTube:
+				case <-notifyTube:
 					wg.Done()
 				}
 			}
@@ -56,10 +56,10 @@ func main() {
 
 	for {
 		select {
-		case <- exitTube:
+		case <-exitTube:
 			return
 		default:
-			ids := <- idsTube
+			ids := <-idsTube
 			wg := sync.WaitGroup{}
 			wg.Add(maxThread)
 
@@ -77,7 +77,7 @@ func main() {
 						repositories.MigrationPortiereUsersInfoToHermes(userInfo)
 					}
 					t2 := tools.GetTimestamp()
-					log.Println("UpdateUsers cost ",  t2-t1, " (ns)")
+					log.Println("UpdateUsers cost ", t2-t1, " (ns)")
 					wg.Done()
 				}(idsForGoroutine)
 

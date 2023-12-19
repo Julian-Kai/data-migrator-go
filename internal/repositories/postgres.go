@@ -4,8 +4,7 @@ import (
 	"database/sql/driver"
 	"fmt"
 	"log"
-
-	"syncTool/src/pkg/config"
+	"syncTool/pkg/config"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
